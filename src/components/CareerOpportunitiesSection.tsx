@@ -1,11 +1,11 @@
 
 import { useEffect } from "react";
 import { 
-  DataAnalyst, 
-  DataEngineer, 
-  DataConsultant, 
-  VisualizationEngineer, 
-  DataScientist 
+  BarChart, 
+  Database, 
+  Briefcase, 
+  ChartLine, 
+  GraduationCap 
 } from "lucide-react";
 
 const CareerOpportunitiesSection = () => {
@@ -15,7 +15,7 @@ const CareerOpportunitiesSection = () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("animate-fade-in");
-          entry.target.style.opacity = "1";
+          entry.target.classList.add("opacity-100");
         }
       });
     }, { threshold: 0.1 });
@@ -23,7 +23,7 @@ const CareerOpportunitiesSection = () => {
     const animatedElements = document.querySelectorAll(".animate-on-scroll");
     animatedElements.forEach((el) => {
       el.classList.remove("animate-fade-in");
-      el.style.opacity = "0";
+      el.classList.add("opacity-0");
       observer.observe(el);
     });
 
@@ -35,37 +35,37 @@ const CareerOpportunitiesSection = () => {
   const roles = [
     { 
       name: "Data Analyst", 
-      icon: <DataAnalyst size={32} className="text-white" />,
+      icon: <BarChart size={32} className="text-white" />,
       position: "left",
       delay: 300
     },
     { 
       name: "Data Engineer", 
-      icon: <DataEngineer size={32} className="text-white" />,
+      icon: <Database size={32} className="text-white" />,
       position: "left-center",
       delay: 500
     },
     { 
       name: "Visualization Engineer", 
-      icon: <VisualizationEngineer size={32} className="text-white" />,
+      icon: <ChartLine size={32} className="text-white" />,
       position: "center-left",
       delay: 700
     },
     { 
       name: "Data Scientist", 
-      icon: <DataScientist size={32} className="text-white" />,
+      icon: <GraduationCap size={32} className="text-white" />,
       position: "center-right",
       delay: 700
     },
     { 
       name: "Python Developer/ MySQL Developer", 
-      icon: <DataScientist size={32} className="text-white" />,
+      icon: <GraduationCap size={32} className="text-white" />,
       position: "right-center",
       delay: 500
     },
     { 
       name: "Data Consultant", 
-      icon: <DataConsultant size={32} className="text-white" />,
+      icon: <Briefcase size={32} className="text-white" />,
       position: "right",
       delay: 300
     }
@@ -86,21 +86,21 @@ const CareerOpportunitiesSection = () => {
   return (
     <section className="py-20 bg-lightgray">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-20 animate-on-scroll" style={{transitionDelay: "0ms"}}>
+        <div className="text-center mb-20 animate-on-scroll transition-all duration-300 delay-0">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Opening the Gateway to <span className="text-blue-600">Analytics</span>
           </h2>
         </div>
 
         <div className="relative mb-16">
-          <div className="text-center mb-12 animate-on-scroll" style={{transitionDelay: "100ms"}}>
+          <div className="text-center mb-12 animate-on-scroll transition-all duration-300 delay-100">
             <h3 className="text-3xl font-bold mb-2">CAREER OPPORTUNITIES</h3>
             <h3 className="text-3xl font-bold">IN AI</h3>
           </div>
           
           {/* Career path arch - visible on lg screens */}
           <div className="hidden lg:block absolute top-32 left-0 w-full">
-            <svg className="w-full animate-on-scroll" viewBox="0 0 1200 200" style={{transitionDelay: "200ms"}}>
+            <svg className="w-full animate-on-scroll transition-all duration-300 delay-200" viewBox="0 0 1200 200">
               <path 
                 d="M50,150 Q 600,0 1150,150" 
                 fill="none" 
@@ -122,7 +122,7 @@ const CareerOpportunitiesSection = () => {
             {roles.map((role, index) => (
               <div 
                 key={role.name}
-                className={`text-center ${getPositionClass(role.position)} animate-on-scroll`}
+                className={`text-center ${getPositionClass(role.position)} animate-on-scroll transition-all duration-300`}
                 style={{transitionDelay: `${role.delay}ms`}}
               >
                 <div className="mx-auto w-24 h-24 rounded-full bg-blue-600 flex items-center justify-center mb-4 shadow-lg">

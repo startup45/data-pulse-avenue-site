@@ -2,13 +2,17 @@
 import { useEffect } from "react";
 import { 
   Cloud, 
-  MachineLearning, 
-  Mlflow, 
-  DataAnalyst, 
-  DataEngineer, 
-  DataConsultant, 
-  VisualizationEngineer, 
-  DataScientist 
+  Code,
+  Database,
+  BarChart,
+  ChartLine,
+  Briefcase,
+  GraduationCap,
+  Users,
+  User,
+  Laptop,
+  Monitor,
+  TrendingUp
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -19,7 +23,7 @@ const SuccessStrategySection = () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("animate-fade-in");
-          entry.target.style.opacity = "1";
+          entry.target.classList.add("opacity-100");
         }
       });
     }, { threshold: 0.1 });
@@ -27,7 +31,7 @@ const SuccessStrategySection = () => {
     const animatedElements = document.querySelectorAll(".animate-on-scroll");
     animatedElements.forEach((el) => {
       el.classList.remove("animate-fade-in");
-      el.style.opacity = "0";
+      el.classList.add("opacity-0");
       observer.observe(el);
     });
 
@@ -39,7 +43,7 @@ const SuccessStrategySection = () => {
   return (
     <section className="py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-on-scroll" style={{transitionDelay: "0ms"}}>
+        <div className="text-center mb-16 animate-on-scroll transition-all duration-300 delay-[0ms]">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Our Success Strategy <span className="text-blue-600">Module</span>
           </h2>
@@ -50,14 +54,14 @@ const SuccessStrategySection = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* AI Tools */}
-          <div className="lg:col-span-2 text-center animate-on-scroll" style={{transitionDelay: "200ms"}}>
+          <div className="lg:col-span-2 text-center animate-on-scroll transition-all duration-300 delay-[200ms]">
             <div className="text-blue-600 font-bold text-6xl md:text-8xl leading-none">AI</div>
             <div className="text-blue-600 font-bold text-4xl md:text-6xl leading-none">Tools</div>
           </div>
 
           {/* Phase 1 */}
           <div className="lg:col-span-4 space-y-6">
-            <div className="flex items-center gap-6 animate-on-scroll" style={{transitionDelay: "300ms"}}>
+            <div className="flex items-center gap-6 animate-on-scroll transition-all duration-300 delay-[300ms]">
               <div className="w-1 bg-blue-600 h-32 rounded-full relative">
                 <div className="absolute top-0 -left-2 w-5 h-5 bg-blue-600 rounded-full"></div>
                 <div className="absolute bottom-0 -left-2 w-5 h-5 bg-blue-600 rounded-full"></div>
@@ -71,7 +75,7 @@ const SuccessStrategySection = () => {
                 ].map((tool, index) => (
                   <div 
                     key={tool.name} 
-                    className="flex items-center gap-4 animate-on-scroll"
+                    className="flex items-center gap-4 animate-on-scroll transition-all duration-300"
                     style={{transitionDelay: `${400 + index * 100}ms`}}
                   >
                     <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
@@ -79,7 +83,7 @@ const SuccessStrategySection = () => {
                   </div>
                 ))}
               </div>
-              <div className="flex flex-col items-center animate-on-scroll" style={{transitionDelay: "500ms"}}>
+              <div className="flex flex-col items-center animate-on-scroll transition-all duration-300 delay-[500ms]">
                 <div className="h-32 w-1 bg-blue-600 rounded-full"></div>
                 <div className="py-2 px-6 border-2 border-blue-600 rounded-xl font-semibold text-blue-600 mt-2">
                   Phase 1
@@ -88,7 +92,7 @@ const SuccessStrategySection = () => {
             </div>
 
             {/* Phase 2 */}
-            <div className="flex items-center gap-6 animate-on-scroll" style={{transitionDelay: "800ms"}}>
+            <div className="flex items-center gap-6 animate-on-scroll transition-all duration-300 delay-[800ms]">
               <div className="w-1 bg-blue-600 h-32 rounded-full relative">
                 <div className="absolute top-0 -left-2 w-5 h-5 bg-blue-600 rounded-full"></div>
                 <div className="absolute bottom-0 -left-2 w-5 h-5 bg-blue-600 rounded-full"></div>
@@ -97,12 +101,12 @@ const SuccessStrategySection = () => {
                 {[
                   { name: "Cloud", icon: <Cloud className="text-blue-600" /> },
                   { name: "Data Science", icon: null },
-                  { name: "Machine Learning", icon: <MachineLearning className="text-blue-600" /> },
-                  { name: "MLflow", icon: <Mlflow className="text-blue-600" /> }
+                  { name: "Machine Learning", icon: <Code className="text-blue-600" /> },
+                  { name: "MLflow", icon: <TrendingUp className="text-blue-600" /> }
                 ].map((tool, index) => (
                   <div 
                     key={tool.name} 
-                    className="flex items-center gap-4 animate-on-scroll"
+                    className="flex items-center gap-4 animate-on-scroll transition-all duration-300"
                     style={{transitionDelay: `${900 + index * 100}ms`}}
                   >
                     <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
@@ -110,7 +114,7 @@ const SuccessStrategySection = () => {
                   </div>
                 ))}
               </div>
-              <div className="flex flex-col items-center animate-on-scroll" style={{transitionDelay: "1000ms"}}>
+              <div className="flex flex-col items-center animate-on-scroll transition-all duration-300 delay-[1000ms]">
                 <div className="h-32 w-1 bg-blue-600 rounded-full"></div>
                 <div className="py-2 px-6 border-2 border-blue-600 rounded-xl font-semibold text-blue-600 mt-2">
                   Phase 2
@@ -125,20 +129,20 @@ const SuccessStrategySection = () => {
               {/* First career path group */}
               <div className="flex-1">
                 <div className="flex items-center gap-6 mb-6">
-                  <div className="w-1 bg-blue-600 h-44 rounded-full relative animate-on-scroll" style={{transitionDelay: "1100ms"}}>
+                  <div className="w-1 bg-blue-600 h-44 rounded-full relative animate-on-scroll transition-all duration-300 delay-[1100ms]">
                     <div className="absolute top-0 -left-2 w-5 h-5 bg-blue-600 rounded-full"></div>
                     <div className="absolute bottom-0 -left-2 w-5 h-5 bg-blue-600 rounded-full"></div>
                   </div>
                   <div className="space-y-5 flex-1">
                     {[
-                      { name: "Data Engineer", icon: <DataEngineer className="text-blue-600" /> },
-                      { name: "Data Analyst", icon: <DataAnalyst className="text-blue-600" /> },
-                      { name: "Visualization Engineer", icon: <VisualizationEngineer className="text-blue-600" /> },
-                      { name: "Data Consultant", icon: <DataConsultant className="text-blue-600" /> }
+                      { name: "Data Engineer", icon: <Database className="text-blue-600" /> },
+                      { name: "Data Analyst", icon: <BarChart className="text-blue-600" /> },
+                      { name: "Visualization Engineer", icon: <ChartLine className="text-blue-600" /> },
+                      { name: "Data Consultant", icon: <Briefcase className="text-blue-600" /> }
                     ].map((role, index) => (
                       <div 
                         key={role.name}
-                        className="flex items-center gap-4 animate-on-scroll"
+                        className="flex items-center gap-4 animate-on-scroll transition-all duration-300"
                         style={{transitionDelay: `${1200 + index * 100}ms`}}
                       >
                         <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
@@ -149,20 +153,20 @@ const SuccessStrategySection = () => {
                 </div>
 
                 <div className="flex items-center gap-6">
-                  <div className="w-1 bg-blue-600 h-44 rounded-full relative animate-on-scroll" style={{transitionDelay: "1600ms"}}>
+                  <div className="w-1 bg-blue-600 h-44 rounded-full relative animate-on-scroll transition-all duration-300 delay-[1600ms]">
                     <div className="absolute top-0 -left-2 w-5 h-5 bg-blue-600 rounded-full"></div>
                     <div className="absolute bottom-0 -left-2 w-5 h-5 bg-blue-600 rounded-full"></div>
                   </div>
                   <div className="space-y-5 flex-1">
                     {[
                       { name: "Data Specialist", icon: null },
-                      { name: "Data Scientist", icon: <DataScientist className="text-blue-600" /> },
-                      { name: "ML Engineer", icon: <MachineLearning className="text-blue-600" /> },
+                      { name: "Data Scientist", icon: <GraduationCap className="text-blue-600" /> },
+                      { name: "ML Engineer", icon: <Laptop className="text-blue-600" /> },
                       { name: "Cloud Engineer", icon: <Cloud className="text-blue-600" /> }
                     ].map((role, index) => (
                       <div 
                         key={role.name}
-                        className="flex items-center gap-4 animate-on-scroll"
+                        className="flex items-center gap-4 animate-on-scroll transition-all duration-300"
                         style={{transitionDelay: `${1700 + index * 100}ms`}}
                       >
                         <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
@@ -175,7 +179,7 @@ const SuccessStrategySection = () => {
 
               {/* Plus section */}
               <div className="flex flex-col justify-center gap-12">
-                <div className="text-center animate-on-scroll" style={{transitionDelay: "2100ms"}}>
+                <div className="text-center animate-on-scroll transition-all duration-300 delay-[2100ms]">
                   <div className="text-5xl text-blue-600 font-bold mb-2">+</div>
                   <div className="text-center">
                     <p className="font-medium">SQL Developer</p>
@@ -184,7 +188,7 @@ const SuccessStrategySection = () => {
                   </div>
                 </div>
                 
-                <div className="text-center animate-on-scroll" style={{transitionDelay: "2200ms"}}>
+                <div className="text-center animate-on-scroll transition-all duration-300 delay-[2200ms]">
                   <div className="text-5xl text-blue-600 font-bold mb-2">+</div>
                   <div className="text-center">
                     <p className="font-medium">1 lakh worth</p>
