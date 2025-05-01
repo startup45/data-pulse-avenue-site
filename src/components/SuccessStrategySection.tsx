@@ -5,13 +5,11 @@ import {
   Code,
   Database,
   BarChart,
-  ChartLine,
+  LineChart,
   Briefcase,
   GraduationCap,
   Users,
-  User,
   Laptop,
-  Monitor,
   TrendingUp
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -40,10 +38,59 @@ const SuccessStrategySection = () => {
     };
   }, []);
 
+  // Define learning phases and career paths
+  const learningPhases = [
+    {
+      phase: "Foundation",
+      number: 1,
+      skills: ["Python", "SQL", "Power BI", "Statistics"],
+      color: "from-blue-500 to-cyan"
+    },
+    {
+      phase: "Advanced",
+      number: 2,
+      skills: ["Cloud Computing", "Data Science", "Machine Learning", "MLflow"],
+      color: "from-cyan to-purple"
+    }
+  ];
+
+  const careerPaths = [
+    { 
+      path: "Data Engineering", 
+      icon: <Database className="h-6 w-6" />,
+      color: "bg-blue-600"
+    },
+    { 
+      path: "Data Analysis", 
+      icon: <BarChart className="h-6 w-6" />,
+      color: "bg-cyan"
+    },
+    { 
+      path: "Data Visualization", 
+      icon: <LineChart className="h-6 w-6" />,
+      color: "bg-teal-600"
+    },
+    { 
+      path: "Data Science", 
+      icon: <GraduationCap className="h-6 w-6" />,
+      color: "bg-purple"
+    },
+    { 
+      path: "Cloud Engineering", 
+      icon: <Cloud className="h-6 w-6" />,
+      color: "bg-indigo-600"
+    },
+    { 
+      path: "AI Development", 
+      icon: <Code className="h-6 w-6" />,
+      color: "bg-purple-800"
+    }
+  ];
+
   return (
     <section className="py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-on-scroll transition-all duration-300 delay-[0ms]">
+        <div className="text-center mb-16 animate-on-scroll transition-all duration-300 delay-0">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Our Success Strategy <span className="text-blue-600">Module</span>
           </h2>
@@ -52,150 +99,82 @@ const SuccessStrategySection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          {/* AI Tools */}
-          <div className="lg:col-span-2 text-center animate-on-scroll transition-all duration-300 delay-[200ms]">
-            <div className="text-blue-600 font-bold text-6xl md:text-8xl leading-none">AI</div>
-            <div className="text-blue-600 font-bold text-4xl md:text-6xl leading-none">Tools</div>
-          </div>
-
-          {/* Phase 1 */}
-          <div className="lg:col-span-4 space-y-6">
-            <div className="flex items-center gap-6 animate-on-scroll transition-all duration-300 delay-[300ms]">
-              <div className="w-1 bg-blue-600 h-32 rounded-full relative">
-                <div className="absolute top-0 -left-2 w-5 h-5 bg-blue-600 rounded-full"></div>
-                <div className="absolute bottom-0 -left-2 w-5 h-5 bg-blue-600 rounded-full"></div>
-              </div>
-              <div className="space-y-5 flex-1">
-                {[
-                  { name: "Python", icon: null },
-                  { name: "SQL", icon: null },
-                  { name: "Power BI", icon: null },
-                  { name: "Statistics", icon: null }
-                ].map((tool, index) => (
-                  <div 
-                    key={tool.name} 
-                    className="flex items-center gap-4 animate-on-scroll transition-all duration-300"
-                    style={{transitionDelay: `${400 + index * 100}ms`}}
-                  >
-                    <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
-                    <span className="font-medium">{tool.name}</span>
+        {/* Learning Journey */}
+        <div className="mb-20">
+          <div className="relative">
+            {/* Journey Line */}
+            <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 via-cyan to-purple hidden md:block"></div>
+            
+            {/* Learning Phases */}
+            <div className="space-y-20 md:space-y-40 relative">
+              {learningPhases.map((phase, index) => (
+                <div 
+                  key={phase.phase}
+                  className={cn(
+                    "flex flex-col md:flex-row items-center animate-on-scroll transition-all duration-500",
+                    index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                  )}
+                  style={{transitionDelay: `${index * 300}ms`}}
+                >
+                  {/* Phase Number */}
+                  <div className={cn(
+                    "w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold text-white mb-6 md:mb-0 z-10",
+                    `bg-gradient-to-br ${phase.color}`
+                  )}>
+                    {phase.number}
                   </div>
-                ))}
-              </div>
-              <div className="flex flex-col items-center animate-on-scroll transition-all duration-300 delay-[500ms]">
-                <div className="h-32 w-1 bg-blue-600 rounded-full"></div>
-                <div className="py-2 px-6 border-2 border-blue-600 rounded-xl font-semibold text-blue-600 mt-2">
-                  Phase 1
-                </div>
-              </div>
-            </div>
-
-            {/* Phase 2 */}
-            <div className="flex items-center gap-6 animate-on-scroll transition-all duration-300 delay-[800ms]">
-              <div className="w-1 bg-blue-600 h-32 rounded-full relative">
-                <div className="absolute top-0 -left-2 w-5 h-5 bg-blue-600 rounded-full"></div>
-                <div className="absolute bottom-0 -left-2 w-5 h-5 bg-blue-600 rounded-full"></div>
-              </div>
-              <div className="space-y-5 flex-1">
-                {[
-                  { name: "Cloud", icon: <Cloud className="text-blue-600" /> },
-                  { name: "Data Science", icon: null },
-                  { name: "Machine Learning", icon: <Code className="text-blue-600" /> },
-                  { name: "MLflow", icon: <TrendingUp className="text-blue-600" /> }
-                ].map((tool, index) => (
-                  <div 
-                    key={tool.name} 
-                    className="flex items-center gap-4 animate-on-scroll transition-all duration-300"
-                    style={{transitionDelay: `${900 + index * 100}ms`}}
-                  >
-                    <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
-                    <span className="font-medium">{tool.name}</span>
+                  
+                  {/* Phase Content */}
+                  <div className={cn(
+                    "bg-gray-100 rounded-xl shadow-lg p-8 w-full md:w-5/12",
+                    index % 2 === 0 ? "md:ml-10" : "md:mr-10"
+                  )}>
+                    <h3 className="text-2xl font-bold mb-4 text-navy">Phase {phase.number}: {phase.phase}</h3>
+                    <div className="grid grid-cols-2 gap-4">
+                      {phase.skills.map(skill => (
+                        <div key={skill} className="flex items-center gap-2">
+                          <div className={cn(
+                            "w-3 h-3 rounded-full",
+                            `bg-gradient-to-br ${phase.color}`
+                          )}></div>
+                          <span className="font-medium">{skill}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                ))}
-              </div>
-              <div className="flex flex-col items-center animate-on-scroll transition-all duration-300 delay-[1000ms]">
-                <div className="h-32 w-1 bg-blue-600 rounded-full"></div>
-                <div className="py-2 px-6 border-2 border-blue-600 rounded-xl font-semibold text-blue-600 mt-2">
-                  Phase 2
                 </div>
-              </div>
+              ))}
             </div>
           </div>
+        </div>
 
-          {/* Career Paths */}
-          <div className="lg:col-span-6">
-            <div className="flex gap-6">
-              {/* First career path group */}
-              <div className="flex-1">
-                <div className="flex items-center gap-6 mb-6">
-                  <div className="w-1 bg-blue-600 h-44 rounded-full relative animate-on-scroll transition-all duration-300 delay-[1100ms]">
-                    <div className="absolute top-0 -left-2 w-5 h-5 bg-blue-600 rounded-full"></div>
-                    <div className="absolute bottom-0 -left-2 w-5 h-5 bg-blue-600 rounded-full"></div>
-                  </div>
-                  <div className="space-y-5 flex-1">
-                    {[
-                      { name: "Data Engineer", icon: <Database className="text-blue-600" /> },
-                      { name: "Data Analyst", icon: <BarChart className="text-blue-600" /> },
-                      { name: "Visualization Engineer", icon: <ChartLine className="text-blue-600" /> },
-                      { name: "Data Consultant", icon: <Briefcase className="text-blue-600" /> }
-                    ].map((role, index) => (
-                      <div 
-                        key={role.name}
-                        className="flex items-center gap-4 animate-on-scroll transition-all duration-300"
-                        style={{transitionDelay: `${1200 + index * 100}ms`}}
-                      >
-                        <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
-                        <span className="font-medium">{role.name}</span>
-                      </div>
-                    ))}
-                  </div>
+        {/* Career Paths */}
+        <div>
+          <h3 className="text-2xl font-bold text-center mb-10 animate-on-scroll transition-all duration-300 delay-600">
+            Career Paths After Completion
+          </h3>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {careerPaths.map((career, index) => (
+              <div 
+                key={career.path}
+                className="bg-white rounded-xl shadow-lg p-6 text-center hover:-translate-y-2 transition-transform duration-300 animate-on-scroll"
+                style={{transitionDelay: `${700 + index * 100}ms`}}
+              >
+                <div className={cn(
+                  "w-12 h-12 rounded-full flex items-center justify-center text-white mx-auto mb-4",
+                  career.color
+                )}>
+                  {career.icon}
                 </div>
-
-                <div className="flex items-center gap-6">
-                  <div className="w-1 bg-blue-600 h-44 rounded-full relative animate-on-scroll transition-all duration-300 delay-[1600ms]">
-                    <div className="absolute top-0 -left-2 w-5 h-5 bg-blue-600 rounded-full"></div>
-                    <div className="absolute bottom-0 -left-2 w-5 h-5 bg-blue-600 rounded-full"></div>
-                  </div>
-                  <div className="space-y-5 flex-1">
-                    {[
-                      { name: "Data Specialist", icon: null },
-                      { name: "Data Scientist", icon: <GraduationCap className="text-blue-600" /> },
-                      { name: "ML Engineer", icon: <Laptop className="text-blue-600" /> },
-                      { name: "Cloud Engineer", icon: <Cloud className="text-blue-600" /> }
-                    ].map((role, index) => (
-                      <div 
-                        key={role.name}
-                        className="flex items-center gap-4 animate-on-scroll transition-all duration-300"
-                        style={{transitionDelay: `${1700 + index * 100}ms`}}
-                      >
-                        <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
-                        <span className="font-medium">{role.name}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <h4 className="font-medium">{career.path}</h4>
               </div>
-
-              {/* Plus section */}
-              <div className="flex flex-col justify-center gap-12">
-                <div className="text-center animate-on-scroll transition-all duration-300 delay-[2100ms]">
-                  <div className="text-5xl text-blue-600 font-bold mb-2">+</div>
-                  <div className="text-center">
-                    <p className="font-medium">SQL Developer</p>
-                    <p className="font-medium">&</p>
-                    <p className="font-medium">Python Developer</p>
-                  </div>
-                </div>
-                
-                <div className="text-center animate-on-scroll transition-all duration-300 delay-[2200ms]">
-                  <div className="text-5xl text-blue-600 font-bold mb-2">+</div>
-                  <div className="text-center">
-                    <p className="font-medium">1 lakh worth</p>
-                    <p className="font-medium">digital notes</p>
-                  </div>
-                </div>
-              </div>
+            ))}
+          </div>
+          
+          <div className="mt-16 text-center animate-on-scroll transition-all duration-300 delay-[1400ms]">
+            <div className="inline-block bg-navy text-white px-6 py-3 rounded-lg font-semibold">
+              + 1 lakh worth digital learning resources
             </div>
           </div>
         </div>
