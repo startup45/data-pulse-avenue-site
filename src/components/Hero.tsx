@@ -16,14 +16,14 @@ const Hero = () => {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
           <div className="w-full lg:w-1/2 text-center lg:text-left">
             <span className="inline-block px-4 py-2 bg-cyan/10 text-cyan rounded-full mb-6 font-medium animate-fade-in">
-              India's Most Trusted Data Science Training
+              India's Most Trusted Edutech
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight animate-fade-in" style={{animationDelay: "0.2s"}}>
-              India's <span className="text-cyan">#1</span> Data Analytics Program
+              Turn Your<span className="text-cyan"> Dream Career</span> into <span className="text-cyan">Reality</span> 
             </h1>
             <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-xl mx-auto lg:mx-0 animate-fade-in" style={{animationDelay: "0.3s"}}>
-              Launch your career in Data Science with industry-relevant curriculum, 
-              real-world projects, and guaranteed internship opportunities.
+              Launch your career with industry-relevant curriculum, 
+              real-world projects, and guaranteed internship opporxtunities.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 animate-fade-in" style={{animationDelay: "0.4s"}}>
               <Button className="btn-secondary text-base w-full sm:w-auto">Join Now</Button>

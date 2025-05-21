@@ -2,6 +2,11 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { Link } from 'react-router-dom';
+
+<Link to="/applyasmentor">
+  <Button className="btn-primary">Get Started</Button>
+</Link>
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,25 +35,25 @@ const Navbar = () => {
     { name: "Home", href: "#" },
     { name: "About", href: "#about" },
     { name: "Programs", href: "#programs" },
-    { name: "Internships", href: "#internships" },
-    { name: "Products", href: "#products" },
-    { name: "Consulting", href: "#consulting" },
-    { name: "Blog", href: "#blog" },
+    // { name: "Internships", href: "#internships" }, 
+    { name: "Bussiness", href: "#bussiness" },
+    // { name: "Consulting", href: "#consulting" },
+    // { name: "Blog", href: "#blog" },
     { name: "Contact", href: "#contact" },
+
   ];
 
   return (
-    <nav 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-white shadow-md py-2" : "bg-transparent py-4"
-      }`}
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white shadow-md py-2
+    ${scrolled ? "rounded-full mx-2 my-2 shadow-lg" : ""}`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           <a href="#" className="flex items-center">
-            <span className="text-navy text-2xl font-bold">Analytics<span className="text-cyan">Avenue</span></span>
+            <span className="text-navy text-2xl font-bold">Hike<span className="text-cyan">Skool</span></span>
           </a>
-          
+
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             <div className="hidden lg:flex space-x-6">
@@ -62,12 +67,14 @@ const Navbar = () => {
                 </a>
               ))}
             </div>
-            <Button className="btn-primary">Get Started</Button>
+            <Link to="/applyasmentor">
+              <Button className="btn-primary">Apply as Mentor</Button>
+            </Link>
           </div>
 
           {/* Mobile Navigation Button */}
           <div className="lg:hidden">
-            <button 
+            <button
               onClick={toggleMenu}
               className="text-navy hover:text-cyan transition-colors"
               aria-label="Toggle Menu"

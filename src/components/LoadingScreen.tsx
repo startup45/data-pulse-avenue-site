@@ -41,8 +41,8 @@ const LoadingScreen = ({ onLoadComplete }: { onLoadComplete: () => void }) => {
           </div>
         </div>
         
-        <h1 className="text-3xl font-bold text-white mb-2">Analytics Avenue</h1>
-        <p className="text-cyan mb-8">Data Analytics Training & Consulting</p>
+        <h1 className="text-3xl font-bold text-white mb-2">Hike Skool</h1>
+        <p className="text-cyan mb-8">Upskilling</p>
         
         <div className="w-80 mx-auto mb-4">
           <Progress value={progress} className="h-2 bg-navy/50" />

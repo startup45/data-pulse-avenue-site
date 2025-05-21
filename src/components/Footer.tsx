@@ -83,7 +83,7 @@ const Footer = () => {
                 <Phone size={18} className="text-cyan flex-shrink-0 mt-1" />
                 <span className="text-white/70">+91 98765 43210</span>
               </p>
-              <div className="pt-4">
+              {/* <div className="pt-4">
                 <h4 className="font-medium mb-2">Subscribe to Newsletter</h4>
                 <div className="flex">
                   <input 
@@ -95,7 +95,7 @@ const Footer = () => {
                     Subscribe
                   </Button>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
