@@ -1,16 +1,12 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { Link } from 'react-router-dom';
-
-<Link to="/applyasmentor">
-  <Button className="btn-primary">Get Started</Button>
-</Link>
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -18,53 +14,51 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "Home", href: "#" },
-    { name: "About", href: "#about" },
-    { name: "Programs", href: "#programs" },
-    // { name: "Internships", href: "#internships" }, 
-    { name: "Bussiness", href: "#bussiness" },
-    // { name: "Consulting", href: "#consulting" },
-    // { name: "Blog", href: "#blog" },
-    { name: "Contact", href: "#contact" },
+  // Close mobile menu on route change (optional)
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
 
+  const navLinks = [
+    { name: "Home", to: "/" },
+    { name: "About", to: "/#about" },
+    { name: "Programs", to: "/#programs" },
+    { name: "Bussiness", to: "/#bussiness" },
+    { name: "Contact", to: "/contact" },
   ];
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white shadow-md py-2
-    ${scrolled ? "rounded-full mx-2 my-2 shadow-lg" : ""}`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white shadow-md py-2 ${
+        scrolled ? "rounded-full mx-2 my-2 shadow-lg" : ""
+      }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          <a href="#" className="flex items-center">
-            <span className="text-navy text-2xl font-bold">Hike<span className="text-cyan">Skool</span></span>
-          </a>
+          <Link to="/" className="flex items-center">
+            <span className="text-navy text-2xl font-bold">
+              Hike<span className="text-cyan">Skool</span>
+            </span>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             <div className="hidden lg:flex space-x-6">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
-                  href={link.href}
+                  to={link.to}
                   className="text-gray-700 hover:text-cyan transition-colors font-medium"
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
             </div>
             <Link to="/applyasmentor">
@@ -89,14 +83,14 @@ const Navbar = () => {
           <div className="lg:hidden mt-4 py-4 bg-white rounded-lg shadow-lg animate-fade-in">
             <div className="flex flex-col space-y-4">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
-                  href={link.href}
+                  to={link.to}
                   className="text-gray-700 hover:text-cyan px-4 py-2 transition-colors font-medium"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
               <div className="px-4 pt-2">
                 <Button className="btn-primary w-full">Get Started</Button>
