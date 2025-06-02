@@ -28,9 +28,9 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", to: "/" },
-    { name: "About", to: "/#about" },
-    { name: "Programs", to: "/#programs" },
-    { name: "Bussiness", to: "/#bussiness" },
+    { name: "About", to: "/about" },
+    { name: "Programs", to: "/programs" },
+    { name: "Business", to: "/business" },
     { name: "Contact", to: "/contact" },
   ];
 
@@ -55,14 +55,15 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.to}
-                  className="text-gray-700 hover:text-cyan transition-colors font-medium"
+                  className="text-gray-700 hover:text-cyan transition-all duration-300 font-medium relative group"
                 >
                   {link.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan transition-all duration-300 group-hover:w-full"></span>
                 </Link>
               ))}
             </div>
             <Link to="/applyasmentor">
-              <Button className="btn-primary">Apply as Mentor</Button>
+              <Button className="btn-primary hover:scale-105 transition-all duration-300">Apply as Mentor</Button>
             </Link>
           </div>
 
@@ -93,7 +94,7 @@ const Navbar = () => {
                 </Link>
               ))}
               <div className="px-4 pt-2">
-                <Button className="btn-primary w-full">Get Started</Button>
+                <Button className="btn-primary w-full">Apply as Mentor</Button>
               </div>
             </div>
           </div>

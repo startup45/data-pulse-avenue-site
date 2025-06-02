@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -5,10 +6,13 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import ApplyMentor from "./pages/applyasmentor";
-import LoadingScreen from "./components/LoadingScreen";
+import About from "./pages/About";
+import Programs from "./pages/Programs";
+import Business from "./pages/Business";
 import Contact from "./pages/Contact";
+import ApplyMentor from "./pages/applyasmentor";
+import NotFound from "./pages/NotFound";
+import LoadingScreen from "./components/LoadingScreen";
 
 const queryClient = new QueryClient();
 
@@ -55,8 +59,11 @@ const App = () => {
             <ScrollToHashElement />
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="/applyasmentor" element={<ApplyMentor />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/programs" element={<Programs />} />
+              <Route path="/business" element={<Business />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/applyasmentor" element={<ApplyMentor />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

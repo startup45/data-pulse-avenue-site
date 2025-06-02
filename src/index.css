@@ -127,4 +127,18 @@
   .gradient-text {
     @apply bg-gradient-to-r from-navy via-purple to-cyan bg-clip-text text-transparent;
   }
+
+  .pause-animation:hover {
+    animation-play-state: paused;
+  }
+}
+
+@layer utilities {
+  .animate-scroll {
+    animation: scroll 60s linear infinite;
+  }
+  
+  .hover\:pause-animation:hover {
+    animation-play-state: paused;
+  }
 }
