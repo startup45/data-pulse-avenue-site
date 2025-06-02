@@ -1,5 +1,5 @@
-
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Clock, Award, Calendar, Users, Star, ArrowRight } from "lucide-react";
@@ -29,6 +29,7 @@ const programGroups = [
         nextBatch: "June 5, 2025",
         rating: 4.8,
         students: 150,
+        link: "/courses/financial-data-analysis"
       },
     ],
   },
@@ -55,6 +56,7 @@ const programGroups = [
         nextBatch: "June 1, 2025",
         rating: 4.9,
         students: 200,
+        link: "/courses/flutter-development"
       },
       {
         id: "react-native-development",
@@ -74,6 +76,7 @@ const programGroups = [
         nextBatch: "June 5, 2025",
         rating: 4.8,
         students: 180,
+        link: "/courses/react-development"
       },
       {
         id: "fullstack-development",
@@ -93,6 +96,7 @@ const programGroups = [
         nextBatch: "June 20, 2025",
         rating: 4.7,
         students: 250,
+        link: "/courses/fullstack-development"
       },
     ],
   },
@@ -292,10 +296,19 @@ const ProgramsSection = () => {
 
                   {/* Action Buttons */}
                   <div className="flex gap-3 pt-4">
-                    <Button className={`flex-1 bg-gradient-to-r ${currentGroup.color} hover:opacity-90 text-white font-medium group`}>
-                      Enroll Now
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Button>
+                    {course.link ? (
+                      <Link to={course.link} className="flex-1">
+                        <Button className={`w-full bg-gradient-to-r ${currentGroup.color} hover:opacity-90 text-white font-medium group`}>
+                          Learn More
+                          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+                      </Link>
+                    ) : (
+                      <Button className={`flex-1 bg-gradient-to-r ${currentGroup.color} hover:opacity-90 text-white font-medium group`}>
+                        Enroll Now
+                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    )}
                     <Button variant="outline" className="border-gray-300 text-gray-600 hover:bg-gray-50">
                       Syllabus
                     </Button>

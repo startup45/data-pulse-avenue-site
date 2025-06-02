@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ParallaxHero from "@/components/ParallaxHero";
 import AnimatedSection from "@/components/AnimatedSection";
+import TeamSection from "@/components/TeamSection";
 import { Users, Target, Award, Lightbulb } from "lucide-react";
 
 const About = () => {
@@ -99,6 +100,9 @@ const About = () => {
             </div>
           </div>
         </AnimatedSection>
+
+        {/* Add Team Section */}
+        <TeamSection />
       </div>
       
       <Footer />
