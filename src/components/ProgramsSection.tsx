@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -123,6 +124,7 @@ const programGroups = [
         nextBatch: "June 15, 2025",
         rating: 4.9,
         students: 120,
+        link: "/courses/cyber-security-essentials"
       },
       {
         id: "ceh",
@@ -142,6 +144,7 @@ const programGroups = [
         nextBatch: "June 25, 2025",
         rating: 4.8,
         students: 90,
+        link: "/courses/ceh"
       },
     ],
   },
@@ -168,6 +171,7 @@ const programGroups = [
         nextBatch: "June 1, 2025",
         rating: 4.9,
         students: 300,
+        link: "/courses/practical-machine-learning"
       },
       {
         id: "deep-learning-fundamentals",
@@ -187,6 +191,7 @@ const programGroups = [
         nextBatch: "July 15, 2025",
         rating: 4.8,
         students: 180,
+        link: "/courses/deep-learning-fundamentals"
       },
     ],
   },
