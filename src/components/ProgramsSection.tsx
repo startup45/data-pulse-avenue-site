@@ -1,208 +1,15 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Clock, Award, Calendar, Users } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Clock, Award, Calendar, Users, Star, ArrowRight } from "lucide-react";
+import AnimatedSection from "@/components/AnimatedSection";
 
-// const programGroups = [
-//   {
-//     id: "finance",
-//     title: "Finance",
-//     courses: [
-//       {
-//         id: "financial-data-analysis",
-//         title: "Financial Data Analysis",
-//         description: "Learn to analyze financial data using advanced tools and techniques for better decision-making.",
-//         icon: "💸",
-//         duration: "10 weeks",
-//         difficulty: "Intermediate",
-//         projects: 5,
-//         features: [
-//           "Financial Modeling",
-//           "Data Analysis Tools",
-//           "Risk Assessment",
-//           "Forecasting Techniques",
-//           "Investment Strategies"
-//         ],
-//         nextBatch: "June 5, 2025",
-//       },
-//     ],
-//   },
-//   {
-//     id: "tech",
-//     title: "Tech",
-//     courses: [
-//       {
-//         id: "tech-fundamentals",
-//         title: "Tech Fundamentals",
-//         description: "Master the basics of technology, including programming and system architecture.",
-//         icon: "💻",
-//         duration: "8 weeks",
-//         difficulty: "Beginner to Intermediate",
-//         projects: 4,
-//         features: [
-//           "Programming Basics",
-//           "System Design",
-//           "Cloud Computing",
-//           "APIs and Integration",
-//           "Tech Project Management"
-//         ],
-//         nextBatch: "June 10, 2025",
-//       },
-//     ],
-//   },
-//   {
-//     id: "cyber-security",
-//     title: "Cyber Security",
-//     courses: [
-//       {
-//         id: "cyber-security-essentials",
-//         title: "Cyber Security Essentials",
-//         description: "Gain skills to protect systems and networks from cyber threats and attacks.",
-//         icon: "🔒",
-//         duration: "12 weeks",
-//         difficulty: "Intermediate",
-//         projects: 6,
-//         features: [
-//           "Threat Detection",
-//           "Network Security",
-//           "Ethical Hacking",
-//           "Incident Response",
-//           "Cryptography Basics"
-//         ],
-//         nextBatch: "June 15, 2025",
-//       },
-//     ],
-//   },
-//   {
-//     id: "commerce",
-//     title: "Commerce",
-//     courses: [
-//       {
-//         id: "ecommerce-strategies",
-//         title: "E-Commerce Strategies",
-//         description: "Learn to build and grow online businesses with effective e-commerce strategies.",
-//         icon: "🛒",
-//         duration: "9 weeks",
-//         difficulty: "Beginner to Intermediate",
-//         projects: 5,
-//         features: [
-//           "E-Commerce Platforms",
-//           "Digital Marketing",
-//           "Supply Chain Management",
-//           "Customer Analytics",
-//           "Payment Systems"
-//         ],
-//         nextBatch: "June 20, 2025",
-//       },
-//     ],
-//   },
-//   {
-//     id: "marketing",
-//     title: "Marketing",
-//     courses: [
-//       {
-//         id: "digital-marketing",
-//         title: "Digital Marketing",
-//         description: "Master digital marketing techniques to promote brands and engage audiences online.",
-//         icon: "📣",
-//         duration: "10 weeks",
-//         difficulty: "Intermediate",
-//         projects: 5,
-//         features: [
-//           "SEO Strategies",
-//           "Social Media Marketing",
-//           "Content Creation",
-//           "Analytics and Reporting",
-//           "Email Campaigns"
-//         ],
-//         nextBatch: "June 25, 2025",
-//       },
-//     ],
-//   },
-//   {
-//     id: "ai-ml",
-//     title: "AI/ML",
-//     courses: [
-//       {
-//         id: "practical-machine-learning",
-//         title: "Practical Machine Learning",
-//         description: "Hands-on training in building and deploying machine learning models for real-world applications.",
-//         icon: "🤖",
-//         duration: "12 weeks",
-//         difficulty: "Intermediate to Advanced",
-//         projects: 8,
-//         features: [
-//           "Model Building",
-//           "Deployment Techniques",
-//           "Real-World Applications",
-//           "Data Preprocessing",
-//           "Performance Evaluation"
-//         ],
-//         nextBatch: "June 1, 2025",
-//       },
-//       {
-//         id: "deep-learning-fundamentals",
-//         title: "Deep Learning Fundamentals",
-//         description: "Master neural networks, computer vision, and natural language processing techniques.",
-//         icon: "🧠",
-//         duration: "10 weeks",
-//         difficulty: "Advanced",
-//         projects: 6,
-//         features: [
-//           "Neural Networks",
-//           "Computer Vision",
-//           "Natural Language Processing",
-//           "Deep Learning Frameworks",
-//           "Model Optimization"
-//         ],
-//         nextBatch: "July 15, 2025",
-//       },
-//       {
-//         id: "ai-product-development",
-//         title: "AI Product Development",
-//         description: "Learn to design, build, and deploy AI-powered products and solutions.",
-//         icon: "🚀",
-//         duration: "9 weeks",
-//         difficulty: "Intermediate",
-//         projects: 5,
-//         features: [
-//           "AI Product Design",
-//           "Prototyping",
-//           "Deployment Strategies",
-//           "User-Centric Development",
-//           "Scalability Solutions"
-//         ],
-//         nextBatch: "August 10, 2025",
-//       },
-//     ],
-//   },
-//   {
-//     id: "design",
-//     title: "Design",
-//     courses: [
-//       {
-//         id: "ui-ux-design",
-//         title: "UI/UX Design",
-//         description: "Learn to create user-friendly and visually appealing designs for digital products.",
-//         icon: "🎨",
-//         duration: "8 weeks",
-//         difficulty: "Beginner to Intermediate",
-//         projects: 4,
-//         features: [
-//           "User Research",
-//           "Wireframing",
-//           "Prototyping",
-//           "Visual Design",
-//           "Usability Testing"
-//         ],
-//         nextBatch: "June 30, 2025",
-//       },
-//     ],
-//   },
-// ];
 const programGroups = [
   {
     id: "finance",
     title: "Finance",
+    color: "from-blue-500 to-blue-600",
     courses: [
       {
         id: "financial-data-analysis",
@@ -220,12 +27,15 @@ const programGroups = [
           "Investment Strategies"
         ],
         nextBatch: "June 5, 2025",
+        rating: 4.8,
+        students: 150,
       },
     ],
   },
   {
     id: "tech",
     title: "Tech",
+    color: "from-purple-500 to-purple-600",
     courses: [
       {
         id: "flutter-development",
@@ -243,6 +53,8 @@ const programGroups = [
           "App Deployment"
         ],
         nextBatch: "June 1, 2025",
+        rating: 4.9,
+        students: 200,
       },
       {
         id: "react-native-development",
@@ -260,40 +72,8 @@ const programGroups = [
           "API Integration"
         ],
         nextBatch: "June 5, 2025",
-      },
-      {
-        id: "power-bi",
-        title: "Power BI",
-        description: "Learn to create interactive dashboards and reports using Power BI.",
-        icon: "📊",
-        duration: "16 weeks",
-        difficulty: "Beginner to Intermediate",
-        projects: 3,
-        features: [
-          "Data Visualization",
-          "Power BI Desktop",
-          "DAX Basics",
-          "Data Modeling",
-          "Report Sharing"
-        ],
-        nextBatch: "June 10, 2025",
-      },
-      {
-        id: "ios-development",
-        title: "iOS Development",
-        description: "Build apps for iOS using Swift and Xcode.",
-        icon: "🍎",
-        duration: "16 weeks",
-        difficulty: "Intermediate",
-        projects: 4,
-        features: [
-          "Swift Programming",
-          "Xcode Essentials",
-          "UI Design with SwiftUI",
-          "Core Data",
-          "App Store Deployment"
-        ],
-        nextBatch: "June 15, 2025",
+        rating: 4.8,
+        students: 180,
       },
       {
         id: "fullstack-development",
@@ -311,131 +91,15 @@ const programGroups = [
           "Deployment"
         ],
         nextBatch: "June 20, 2025",
-      },
-      {
-        id: "mern-stack-development",
-        title: "MERN Stack Development",
-        description: "Build modern web applications using MongoDB, Express.js, React, and Node.js.",
-        icon: "🌐",
-        duration: "16 weeks",
-        difficulty: "Intermediate",
-        projects: 5,
-        features: [
-          "MongoDB Setup",
-          "Express.js Routing",
-          "React Components",
-          "Node.js Backend",
-          "Full App Integration"
-        ],
-        nextBatch: "June 25, 2025",
-      },
-      {
-        id: "mean-stack-development",
-        title: "MEAN Stack Development",
-        description: "Develop web apps using MongoDB, Express.js, Angular, and Node.js.",
-        icon: "🛠️",
-        duration: "16 weeks",
-        difficulty: "Intermediate",
-        projects: 5,
-        features: [
-          "MongoDB Basics",
-          "Express.js Middleware",
-          "Angular Framework",
-          "Node.js Server",
-          "App Deployment"
-        ],
-        nextBatch: "June 30, 2025",
-      },
-      {
-        id: "lamp-stack-development",
-        title: "LAMP Stack Development",
-        description: "Learn to build web applications using Linux, Apache, MySQL, and PHP.",
-        icon: "🖥️",
-        duration: "16 weeks",
-        difficulty: "Intermediate",
-        projects: 4,
-        features: [
-          "Linux Basics",
-          "Apache Configuration",
-          "MySQL Databases",
-          "PHP Programming",
-          "Web Deployment"
-        ],
-        nextBatch: "July 5, 2025",
-      },
-      {
-        id: "python-django-stack-development",
-        title: "Python & Django Stack Development",
-        description: "Create robust web applications using Python and the Django framework.",
-        icon: "🐍",
-        duration: "16 weeks",
-        difficulty: "Intermediate",
-        projects: 5,
-        features: [
-          "Python Fundamentals",
-          "Django Framework",
-          "Database Integration",
-          "User Authentication",
-          "App Deployment"
-        ],
-        nextBatch: "July 10, 2025",
-      },
-      {
-        id: "php-laravel-stack-development",
-        title: "PHP & Laravel Stack Development",
-        description: "Build dynamic web applications using PHP and the Laravel framework.",
-        icon: "🖌️",
-        duration: "16 weeks",
-        difficulty: "Intermediate",
-        projects: 4,
-        features: [
-          "PHP Basics",
-          "Laravel Framework",
-          "Eloquent ORM",
-          "Blade Templating",
-          "App Deployment"
-        ],
-        nextBatch: "July 15, 2025",
-      },
-      {
-        id: "devops-cloud-computing",
-        title: "DevOps & Cloud Computing",
-        description: "Master DevOps practices and cloud computing with AWS, Docker, and Kubernetes.",
-        icon: "☁️",
-        duration: "16 weeks",
-        difficulty: "Intermediate to Advanced",
-        projects: 6,
-        features: [
-          "CI/CD Pipelines",
-          "Docker Containers",
-          "Kubernetes Orchestration",
-          "AWS Services",
-          "Infrastructure as Code"
-        ],
-        nextBatch: "July 20, 2025",
-      },
-      {
-        id: "ui-ux-design",
-        title: "UI/UX Design",
-        description: "Learn to create user-friendly and visually appealing designs for digital products.",
-        icon: "🎨",
-        duration: "16 weeks",
-        difficulty: "Beginner to Intermediate",
-        projects: 4,
-        features: [
-          "User Research",
-          "Wireframing",
-          "Prototyping",
-          "Visual Design",
-          "Usability Testing"
-        ],
-        nextBatch: "July 25, 2025",
+        rating: 4.7,
+        students: 250,
       },
     ],
   },
-{
+  {
     id: "cyber-security",
     title: "Cyber Security",
+    color: "from-red-500 to-red-600",
     courses: [
       {
         id: "cyber-security-essentials",
@@ -453,23 +117,8 @@ const programGroups = [
           "Cryptography Basics"
         ],
         nextBatch: "June 15, 2025",
-      },
-      {
-        id: "soc",
-        title: "Security Operations Center (SOC)",
-        description: "Learn to monitor, detect, and respond to cyber threats in a Security Operations Center environment.",
-        icon: "🛡️",
-        duration: "16 weeks",
-        difficulty: "Intermediate to Advanced",
-        projects: 5,
-        features: [
-          "Threat Monitoring",
-          "SIEM Tools",
-          "Incident Analysis",
-          "Log Management",
-          "Response Strategies"
-        ],
-        nextBatch: "June 20, 2025",
+        rating: 4.9,
+        students: 120,
       },
       {
         id: "ceh",
@@ -487,109 +136,15 @@ const programGroups = [
           "Penetration Testing"
         ],
         nextBatch: "June 25, 2025",
-      },
-      {
-        id: "c-pent",
-        title: "Penetration Testing (C/PENT)",
-        description: "Learn advanced penetration testing techniques to secure systems from cyber attacks.",
-        icon: "🔍",
-        duration: "16 weeks",
-        difficulty: "Advanced",
-        projects: 5,
-        features: [
-          "Vulnerability Assessment",
-          "Exploitation Techniques",
-          "Post-Exploitation",
-          "Reporting and Mitigation",
-          "Penetration Testing Tools"
-        ],
-        nextBatch: "July 1, 2025",
-      },
-      {
-        id: "c-hfi",
-        title: "Computer Hacking Forensic Investigator (C/HFI)",
-        description: "Gain skills to investigate cyber crimes and recover digital evidence.",
-        icon: "🕵️",
-        duration: "16 weeks",
-        difficulty: "Intermediate to Advanced",
-        projects: 5,
-        features: [
-          "Digital Forensics",
-          "Evidence Collection",
-          "Data Recovery",
-          "Forensic Tools",
-          "Legal Procedures"
-        ],
-        nextBatch: "July 5, 2025",
-      },
-      {
-        id: "cnd",
-        title: "Certified Network Defender (CND)",
-        description: "Learn to protect, detect, and respond to network security threats.",
-        icon: "🌐",
-        duration: "16 weeks",
-        difficulty: "Intermediate",
-        projects: 4,
-        features: [
-          "Network Defense Strategies",
-          "Firewall Configuration",
-          "Intrusion Detection",
-          "VPN Setup",
-          "Network Monitoring"
-        ],
-        nextBatch: "July 10, 2025",
-      },
-    ],
-  },
-  {
-    id: "commerce",
-    title: "Commerce",
-    courses: [
-      {
-        id: "ecommerce-strategies",
-        title: "E-Commerce Strategies",
-        description: "Learn to build and grow online businesses with effective e-commerce strategies.",
-        icon: "🛒",
-        duration: "16 weeks",
-        difficulty: "Beginner to Intermediate",
-        projects: 5,
-        features: [
-          "E-Commerce Platforms",
-          "Digital Marketing",
-          "Supply Chain Management",
-          "Customer Analytics",
-          "Payment Systems"
-        ],
-        nextBatch: "June 20, 2025",
-      },
-    ],
-  },
-  {
-    id: "marketing",
-    title: "Marketing",
-    courses: [
-      {
-        id: "digital-marketing",
-        title: "Digital Marketing",
-        description: "Master digital marketing techniques to promote brands and engage audiences online.",
-        icon: "📣",
-        duration: "12 weeks",
-        difficulty: "Intermediate",
-        projects: 5,
-        features: [
-          "SEO Strategies",
-          "Social Media Marketing",
-          "Content Creation",
-          "Analytics and Reporting",
-          "Email Campaigns"
-        ],
-        nextBatch: "June 25, 2025",
+        rating: 4.8,
+        students: 90,
       },
     ],
   },
   {
     id: "ai-ml",
     title: "AI/ML",
+    color: "from-green-500 to-green-600",
     courses: [
       {
         id: "practical-machine-learning",
@@ -607,6 +162,8 @@ const programGroups = [
           "Performance Evaluation"
         ],
         nextBatch: "June 1, 2025",
+        rating: 4.9,
+        students: 300,
       },
       {
         id: "deep-learning-fundamentals",
@@ -624,196 +181,146 @@ const programGroups = [
           "Model Optimization"
         ],
         nextBatch: "July 15, 2025",
-      },
-      {
-        id: "ai-product-development",
-        title: "AI Product Development",
-        description: "Learn to design, build, and deploy AI-powered products and solutions.",
-        icon: "🚀",
-        duration: "16 weeks",
-        difficulty: "Intermediate",
-        projects: 5,
-        features: [
-          "AI Product Design",
-          "Prototyping",
-          "Deployment Strategies",
-          "User-Centric Development",
-          "Scalability Solutions"
-        ],
-        nextBatch: "August 10, 2025",
-      },
-    ],
-  },
-  {
-    id: "design",
-    title: "Design",
-    courses: [
-      {
-        id: "ui-ux-design",
-        title: "UI/UX Design",
-        description: "Learn to create user-friendly and visually appealing designs for digital products.",
-        icon: "🎨",
-        duration: "16 weeks",
-        difficulty: "Beginner to Intermediate",
-        projects: 4,
-        features: [
-          "User Research",
-          "Wireframing",
-          "Prototyping",
-          "Visual Design",
-          "Usability Testing"
-        ],
-        nextBatch: "June 30, 2025",
+        rating: 4.8,
+        students: 180,
       },
     ],
   },
 ];
-const ProgramsSection = () => {
-  // Default to first group & first course of that group
-  const [activeGroup, setActiveGroup] = useState(programGroups[0].id);
-  const [activeCourse, setActiveCourse] = useState(programGroups[0].courses[0].id);
 
-  // Find current group & course
+const ProgramsSection = () => {
+  const [activeGroup, setActiveGroup] = useState(programGroups[0].id);
+
   const currentGroup = programGroups.find((g) => g.id === activeGroup);
-  const activeProgram = currentGroup.courses.find((c) => c.id === activeCourse);
 
   return (
-    <section id="programs" className="py-20 bg-white">
+    <section id="programs" className="py-20 bg-gradient-to-br from-gray-50 to-white">
       <div className="container mx-auto px-4">
-        <div className="mb-16 text-center">
-          <h2 className="section-title">Our Programs & Courses</h2>
-          <p className="section-subtitle">
-            Comprehensive learning paths designed by industry experts to transform you into a job-ready data professional
+        <AnimatedSection className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <span className="gradient-text">Explore Our Programs</span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            Transform your career with industry-leading courses designed by experts. 
+            From beginner to advanced, we have the perfect learning path for you.
           </p>
-        </div>
+        </AnimatedSection>
 
-        {/* Group Tabs */}
-        <div className="flex flex-wrap justify-center gap-4 mb-8">
+        {/* Category Navigation */}
+        <AnimatedSection className="flex flex-wrap justify-center gap-4 mb-12" delay={200}>
           {programGroups.map((group) => (
             <button
               key={group.id}
-              className={`px-6 py-3 rounded-lg font-medium transition-all ${
+              className={`px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 ${
                 activeGroup === group.id
-                  ? "bg-navy text-white shadow-md"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  ? `bg-gradient-to-r ${group.color} text-white shadow-lg`
+                  : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200 shadow-sm"
               }`}
-              onClick={() => {
-                setActiveGroup(group.id);
-                setActiveCourse(group.courses[0].id); // reset course to first of group
-              }}
+              onClick={() => setActiveGroup(group.id)}
             >
               {group.title}
             </button>
           ))}
-        </div>
+        </AnimatedSection>
 
-        {/* Course Tabs (depend on selected group) */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {currentGroup.courses.map((course) => (
-            <button
-              key={course.id}
-              className={`px-6 py-3 rounded-lg font-medium transition-all ${
-                activeCourse === course.id
-                  ? "bg-cyan text-white shadow-md"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-              }`}
-              onClick={() => setActiveCourse(course.id)}
-            >
-              <span className="mr-2">{course.icon}</span>
-              {course.title}
-            </button>
-          ))}
-        </div>
-
-        {/* Active Program Details */}
-        <div className="bg-lightgray rounded-xl overflow-hidden shadow-lg">
-          <div className="flex flex-col lg:flex-row">
-            {/* Program Info */}
-            <div className="w-full lg:w-1/2 p-8 lg:p-12">
-              <h3 className="text-2xl font-bold mb-4 text-navy">{activeProgram.title}</h3>
-              <p className="text-gray-700 mb-6">{activeProgram.description}</p>
-
-              {/* Program Stats */}
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                <div className="flex items-center gap-3">
-                  <div className="bg-cyan/10 p-2 rounded-full">
-                    <Clock className="text-cyan" size={18} />
+        {/* Course Cards Grid */}
+        <AnimatedSection delay={400}>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {currentGroup.courses.map((course, index) => (
+              <Card 
+                key={course.id} 
+                className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg overflow-hidden bg-white"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <CardHeader className="pb-4">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${currentGroup.color} flex items-center justify-center text-2xl transform group-hover:scale-110 transition-transform duration-300`}>
+                      {course.icon}
+                    </div>
+                    <div className="flex items-center gap-1 bg-yellow-50 px-3 py-1 rounded-full">
+                      <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                      <span className="text-sm font-medium text-yellow-700">{course.rating}</span>
+                    </div>
                   </div>
+                  <CardTitle className="text-xl text-navy group-hover:text-purple transition-colors duration-300">
+                    {course.title}
+                  </CardTitle>
+                  <CardDescription className="text-gray-600 leading-relaxed">
+                    {course.description}
+                  </CardDescription>
+                </CardHeader>
+
+                <CardContent className="space-y-6">
+                  {/* Course Stats */}
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-cyan" />
+                      <span className="text-sm text-gray-600">{course.duration}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Award className="w-4 h-4 text-purple" />
+                      <span className="text-sm text-gray-600">{course.difficulty}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Users className="w-4 h-4 text-cyan" />
+                      <span className="text-sm text-gray-600">{course.students}+ Students</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-4 h-4 text-purple" />
+                      <span className="text-sm text-gray-600">{course.projects} Projects</span>
+                    </div>
+                  </div>
+
+                  {/* Key Features */}
                   <div>
-                    <p className="text-sm text-gray-500">Duration</p>
-                    <p className="font-semibold">{activeProgram.duration}</p>
+                    <h4 className="font-semibold text-navy mb-3">Key Features:</h4>
+                    <div className="space-y-2">
+                      {course.features.slice(0, 3).map((feature, idx) => (
+                        <div key={idx} className="flex items-center gap-2">
+                          <div className="w-2 h-2 bg-cyan rounded-full"></div>
+                          <span className="text-sm text-gray-600">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="bg-purple/10 p-2 rounded-full">
-                    <Award className="text-purple" size={18} />
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500">Difficulty</p>
-                    <p className="font-semibold">{activeProgram.difficulty}</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="bg-cyan/10 p-2 rounded-full">
-                    <Calendar className="text-cyan" size={18} />
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500">Next Batch</p>
-                    <p className="font-semibold">{activeProgram.nextBatch}</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="bg-purple/10 p-2 rounded-full">
-                    <Users className="text-purple" size={18} />
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500">Projects</p>
-                    <p className="font-semibold">{activeProgram.projects} Projects</p>
-                  </div>
-                </div>
-              </div>
 
-              {/* Features List */}
-              <div className="mb-8">
-                <h4 className="text-lg font-semibold mb-3 text-navy">What You'll Learn</h4>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {activeProgram.features.map((feature, index) => (
-                    <li key={index} className="flex items-center gap-2">
-                      <span className="inline-block w-2 h-2 bg-cyan rounded-full"></span>
-                      <span className="text-gray-700">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="flex flex-wrap gap-4">
-                <Button className="btn-primary">Enroll Now</Button>
-                <Button variant="outline" className="border-navy text-navy hover:bg-navy/5">
-                  Download Syllabus
-                </Button>
-              </div>
-            </div>
-
-            {/* Program Image */}
-            <div className="w-full lg:w-1/2 bg-navy relative overflow-hidden min-h-[300px]">
-              <div className="absolute inset-0 bg-gradient-to-br from-navy/90 to-navy/70 mix-blend-multiply"></div>
-              <img 
-                src={`https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80`}
-                alt={activeProgram.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 flex items-center justify-center p-8">
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-white max-w-md text-center">
-                  <h4 className="text-xl font-bold mb-3">Guaranteed Internship</h4>
-                  <p className="mb-4">Complete this program and gain real-world experience through our guaranteed internship program with top companies.</p>
-                  <div className="inline-block bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 text-sm font-medium">
-                    Average Stipend: ₹15,000 - ₹25,000/month
+                  {/* Next Batch */}
+                  <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg p-4">
+                    <div className="text-sm text-gray-500 mb-1">Next Batch Starts</div>
+                    <div className="font-semibold text-navy">{course.nextBatch}</div>
                   </div>
-                </div>
-              </div>
-            </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex gap-3 pt-4">
+                    <Button className={`flex-1 bg-gradient-to-r ${currentGroup.color} hover:opacity-90 text-white font-medium group`}>
+                      Enroll Now
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                    <Button variant="outline" className="border-gray-300 text-gray-600 hover:bg-gray-50">
+                      Syllabus
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
-        </div>
+        </AnimatedSection>
+
+        {/* Call to Action */}
+        <AnimatedSection className="text-center bg-gradient-to-r from-navy to-purple rounded-2xl p-12 text-white" delay={600}>
+          <h3 className="text-3xl font-bold mb-4">Ready to Start Your Journey?</h3>
+          <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+            Join thousands of students who have transformed their careers with our expert-led programs.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="bg-white text-navy hover:bg-gray-100 font-semibold px-8">
+              View All Programs
+            </Button>
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 font-semibold px-8">
+              Book Free Consultation
+            </Button>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   );
